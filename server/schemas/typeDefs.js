@@ -1,22 +1,25 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-  type Profile {
+  type Appointment {
     _id: ID
-    name: String
-    skills: [String]!
+    clientName: String
+    time: Date
+    description: String
   }
 
   type Query {
-    profiles: [Profile]!
-    profile(profileId: ID!): Profile
+    appointments: [Appointment]!
+    appointment(appointmentId: ID!): Appointment
   }
 
   type Mutation {
-    addProfile(name: String!): Profile
-    addSkill(profileId: ID!, skill: String!): Profile
-    removeProfile(profileId: ID!): Profile
-    removeSkill(profileId: ID!, skill: String!): Profile
+    addAppointment(
+      clientName: String!
+      time: Date!
+      description: String!
+    ): Appointment
+    removeAppointment(appointmentId: ID!): Appointment
   }
 `;
 
