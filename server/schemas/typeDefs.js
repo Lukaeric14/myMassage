@@ -7,6 +7,7 @@ const typeDefs = gql`
     _id: ID
     clientName: String
     time: Date
+    duration: Int
     description: String
   }
 
@@ -20,6 +21,7 @@ const typeDefs = gql`
       clientName: String!
       time: Date!
       description: String!
+      duration: Int!
     ): Appointment
     removeAppointment(appointmentId: ID!): Appointment
   }
