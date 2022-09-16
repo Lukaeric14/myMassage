@@ -2,6 +2,15 @@ const { Appointment } = require("../models");
 const { GraphQLScalarType } = require("graphql");
 
 const resolvers = {
+  Date: new GraphQLScalarType({
+    name: "Date",
+    parseValue(value) {
+      return new Date(value);
+    },
+    serialize(value) {
+      return value.toISOString();
+    },
+  }),
   Query: {
     appointments: async () => {
       return Appointment.find();
