@@ -3,7 +3,7 @@
 ![badge](https://img.shields.io/badge/license-MIT-orange)
 
 # Description: 
-This is a fullstack application utilizing Node.js, Express.js, React, and GraphQL server database.
+This is a MERN fullstack application utilizing MongoDB, Node.js, Express.js, React, and GraphQL server database.
 
 # Proposal:
 
