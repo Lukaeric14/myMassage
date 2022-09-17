@@ -1,34 +1,32 @@
-import React from 'react';
-import { useQuery } from '@apollo/client';
+import React from "react";
+import { useQuery } from "@apollo/client";
+import AppointmentForm from "../components/AppointmentForm";
 
-import ProfileList from '../components/ProfileList';
-import ProfileForm from '../components/ProfileForm';
+import { QUERY_PROFILES } from "../utils/queries";
 
-import { QUERY_PROFILES } from '../utils/queries';
+import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import AppointmentList from "../components/AppointmentList";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppointmentForm />,
+  },
+  {
+    path: "/bookings",
+    element: <AppointmentList />,
+  },
+]);
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_PROFILES);
-  const profiles = data?.profiles || [];
-
   return (
     <main>
       <div className="flex-row justify-center">
         <div
           className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
+          style={{ border: "1px dotted #1a1a1a" }}
         >
-          <ProfileForm />
-        </div>
-
-        <div className="col-12 col-md-10 my-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <ProfileList
-              profiles={profiles}
-              title="Here's the current roster of friends..."
-            />
-          )}
+          <RouterProvider router={router} />
         </div>
       </div>
     </main>
